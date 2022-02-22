@@ -8,7 +8,7 @@ const TodoForm = ({onInsert}) => {
     const onSubmit = useCallback(e => {
         onInsert(value);
         setValue('');   //초기화
-        e.preventDefault(); //새로고침방치        
+        e.preventDefault(); //새로고침방지 
     }, [onInsert, value]); //이 두개를 넘겨받는다
 
     return (
