@@ -5,8 +5,8 @@ const TodoItem = ({todo, onToggle, onRemove}) => {
     return (
     <li>
         <span
-        style = {{textDecoration: done? 'line-through' : 'none'}}
-        onClick={()=> onToggle(id)}>{text}</span>    
+            style = {{textDecoration: done? 'line-through' : 'none'}}
+            onClick={()=> onToggle(id)}>{text}</span>    
         <button onClick={() => onRemove(id)}>삭제</button>
     </li>
     );
