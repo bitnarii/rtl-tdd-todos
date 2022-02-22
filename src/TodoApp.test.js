@@ -6,7 +6,11 @@ describe('<TodoList>', () => {
     it('renders TodoForm and TodoList', () => {
         const {getByText, getByTestId} = render(<TodoApp/>);
         getByText('등록');
-        getByTestId('TodoList');
-        
+        getByTestId('TodoList');        
+    });
+    it('render two defaults todos', () => {
+        const {getByText} = render(<TodoApp/>);
+        getByText('TDD 배우기');
+        getByText('react-testing-library 사용하기');
     })
-})
+});
