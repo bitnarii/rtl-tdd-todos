@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 import TodoItem from "./TodoItem";
 
 describe('<TodoItem />', () => {
@@ -23,4 +23,21 @@ describe('<TodoItem />', () => {
         expect(span).toBeTruthy();
         expect(button).toBeTruthy();
     });
+    it('does not show line-through on span when done is false', () => {
+        const {span} = setup({todo:{...sampleTodo, done:false}});
+        expect(span).not.toHaveStyle('text-decoration: line-through;');
+    })
+    it('calls onToggle', ()=> {
+        const onToggle = jest.fn();
+        const {span} = setup({onToggle});
+        fireEvent.click(span);
+        expect(onToggle).toBeCalledWith(sampleTodo.id);
+    })
+    it('calls onRemove', () => {
+        const onRemove = jest.fn();
+        const {button} = setup({onRemove});
+        fireEvent.click(button);
+        expect(onRemove).toBeCalledWith(sampleTodo.id);
+
+    })
 })
